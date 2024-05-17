@@ -13,12 +13,25 @@ function App() {
 
   const [songData, setSongData] = useState(data);
 
+  const addToFavourite = (songIndex)=> {
+    setSongData((prev)=>{
+      return prev.map((item, index)=>{
+        if(index == songIndex){
+           return {...item, added: !item.added}
+        }
+
+        return item
+      })
+    })
+
+  }
+
   return (
     <div className='w-full h-screen bg-zinc-300'>
-      <Navbar/>
+      <Navbar />
       <div className='px-20 flex flex-wrap gap-10 mt-10'>
       {songData.map((item, index)=>(
-          <Card key={index} image={item.image} name={item.name} artist={item.artist} added={item.added}/>
+          <Card key={index} clickHandler = {addToFavourite} index = {index} image={item.image} name={item.name} artist={item.artist} added={item.added}/>
       ))}
       </div>
     </div>
