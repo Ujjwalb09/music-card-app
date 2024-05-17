@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className='w-full h-screen bg-zinc-300'>
-      <Navbar />
+      <Navbar data={songData} />
       <div className='px-20 flex flex-wrap gap-10 mt-10'>
       {songData.map((item, index)=>(
           <Card key={index} clickHandler = {addToFavourite} index = {index} image={item.image} name={item.name} artist={item.artist} added={item.added}/>
